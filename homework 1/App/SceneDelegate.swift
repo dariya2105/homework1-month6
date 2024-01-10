@@ -16,27 +16,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-//        let vc = UserAutorizationViewController()
-//        let nav = UINavigationController(rootViewController: vc)
-//        window?.rootViewController = nav
-//        window?.makeKeyAndVisible()
         
-        let splashVC = SplashViewController()
-                window?.rootViewController = splashVC
+        let vc = SplashViewController()
+                let navControler = UINavigationController(rootViewController: vc)
+                window?.rootViewController = navControler
                 window?.makeKeyAndVisible()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    self.showAuthorizationScreen()
-                }
-    }
-    
-    func showAuthorizationScreen() {
-            // After the splash screen, show the UserAuthorizationViewController
-            let userAuthVC = UserAutorizationViewController()
-            let navController = UINavigationController(rootViewController: userAuthVC)
-            window?.rootViewController = navController
-            window?.makeKeyAndVisible()
-        }
+            }
+            
+            func showAuthorizationScreen() {
+                let userAuthVC = UserAutorizationViewController()
+                let navController = UINavigationController(rootViewController: userAuthVC)
+                window?.rootViewController = navController
+                window?.makeKeyAndVisible()
+            }
 
 
     func sceneDidDisconnect(_ scene: UIScene) {

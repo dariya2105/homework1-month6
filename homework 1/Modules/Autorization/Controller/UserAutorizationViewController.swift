@@ -9,17 +9,46 @@ import UIKit
 
 class UserAutorizationViewController: UIViewController {
     
-    private var nameTF = MakerView.shared.makeTF(placeholder: "Name")
+    private let nameTextField: UITextField = {
+        let view = UITextField()
+        view.placeholder = "Name"
+        view.layer.cornerRadius = 18
+        view.layer.borderColor = UIColor(red: 0.012, green: 0.012, blue: 0.012, alpha: 1).cgColor
+        view.layer.borderWidth = 0.5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    private let surnameTF = MakerView.shared.makeTF(placeholder: "Surname")
+    private let surnameTextField: UITextField = {
+        let view = UITextField()
+        view.placeholder = "Surname"
+        view.layer.cornerRadius = 18
+        view.layer.borderColor = UIColor(red: 0.012, green: 0.012, blue: 0.012, alpha: 1).cgColor
+        view.layer.borderWidth = 0.5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    private let numberTF = MakerView.shared.makeTF(placeholder: "Phone Number")
+    private let numberTextField: UITextField = {
+        let view = UITextField()
+        view.placeholder = "Phone Number"
+        view.layer.cornerRadius = 18
+        view.layer.borderColor = UIColor(red: 0.012, green: 0.012, blue: 0.012, alpha: 1).cgColor
+        view.layer.borderWidth = 0.5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    private let signInButton = MakerView.shared.makeButton(setTitle: "Sign In",
-                                                           setTitleColor: .black,
-                                                           backgroundColor: .systemOrange,
-                                                           cornerRadius: 18,
-                                                           fontSize: 20)
+    private let signInButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.setTitle("Sign In", for: .normal)
+        view.setTitleColor(UIColor.black, for: .normal)
+        view.backgroundColor = .systemOrange
+        view.layer.cornerRadius = 18
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,50 +57,60 @@ class UserAutorizationViewController: UIViewController {
     }
     
     private func initUI() {
-        view.addSubview(nameTF)
-        setupConstraintsForNameTF()
+        view.addSubview(nameTextField)
+        setupConstraintsForNameTextField()
         
-        view.addSubview(surnameTF)
-        setupConstraintsForSurnameTF()
+        view.addSubview(surnameTextField)
+        setupConstraintsForSurnameTextField()
         
-        view.addSubview(numberTF)
-        setupConstraintsForNumberTF()
+        view.addSubview(numberTextField)
+        setupConstraintsForNumberTextField()
         
         view.addSubview(signInButton)
         setupConstraintsForSignInButton()
     }
     
-    private func setupConstraintsForNameTF() {
+    private func prefixLabel(textField: UITextField) {
+        let prefixLabel = UILabel()
+        prefixLabel.text = "   "
+        textField.leftView = prefixLabel
+        textField.leftViewMode = .always
+    }
+    
+    private func setupConstraintsForNameTextField() {
         NSLayoutConstraint.activate([
-            nameTF.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
-            nameTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            nameTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            nameTF.heightAnchor.constraint(equalToConstant: 40)
+            nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            nameTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
+        prefixLabel(textField: nameTextField)
     }
     
     
-    private func setupConstraintsForSurnameTF() {
+    private func setupConstraintsForSurnameTextField() {
         NSLayoutConstraint.activate([
-            surnameTF.topAnchor.constraint(equalTo: nameTF.bottomAnchor, constant: 20),
-            surnameTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            surnameTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            surnameTF.heightAnchor.constraint(equalToConstant: 40)
+            surnameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+            surnameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            surnameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            surnameTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
+        prefixLabel(textField: surnameTextField)
     }
     
-    private func setupConstraintsForNumberTF() {
+    private func setupConstraintsForNumberTextField() {
         NSLayoutConstraint.activate([
-            numberTF.topAnchor.constraint(equalTo: surnameTF.bottomAnchor, constant: 20),
-            numberTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            numberTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            numberTF.heightAnchor.constraint(equalToConstant: 40)
+            numberTextField.topAnchor.constraint(equalTo: surnameTextField.bottomAnchor, constant: 20),
+            numberTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            numberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            numberTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
+        prefixLabel(textField: numberTextField)
     }
     
     private func setupConstraintsForSignInButton() {
         NSLayoutConstraint.activate([
-            signInButton.topAnchor.constraint(equalTo: numberTF.bottomAnchor, constant: 40),
+            signInButton.topAnchor.constraint(equalTo: numberTextField.bottomAnchor, constant: 40),
             signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             signInButton.heightAnchor.constraint(equalToConstant: 50)
@@ -79,22 +118,9 @@ class UserAutorizationViewController: UIViewController {
         signInButton.addTarget(self, action: #selector(signInBtnTapped), for: .touchUpInside)
     }
     
-    @objc
-    private func signInBtnTapped() {
-        if validated() {
-            let person = PersonModel(name: nameTF.text,
-                                     surname: surnameTF.text ?? "",
-                                     phoneNumber: numberTF.text ?? "")
-            let vc = InfoViewController()
-            vc.person = person
-            present(vc, animated: true)
-            UserSessionManager.shared.saveUserSession()
-        } 
-    }
-    
-    private func validated() -> Bool {
-        guard let name = nameTF.text,
-              let surname = surnameTF.text,
+    private var validated: Bool {
+        guard let name = nameTextField.text,
+              let surname = surnameTextField.text,
               !name.isEmpty,
               !surname.isEmpty
         else {
@@ -103,6 +129,21 @@ class UserAutorizationViewController: UIViewController {
         }
         signInButton.isEnabled = true
         return true
+    }
+    
+    @objc
+    private func signInBtnTapped() {
+        if validated {
+            UserSessionManager.shared.saveUserSession(
+            PersonModel(
+                name: nameTextField.text!,
+                surname: surnameTextField.text!,
+                phoneNumber: numberTextField.text!
+                )
+            )
+            let vc = InfoViewController()
+            present(vc, animated: true)
+        }
     }
 }
 

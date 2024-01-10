@@ -9,58 +9,75 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    var person: PersonModel?
+    private let nameLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .black
+        view.font = .systemFont(ofSize: 20, weight: .bold)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    private let nameLbl = MakerView.shared.makeLbl()
+    private let surnameLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .black
+        view.font = .systemFont(ofSize: 20, weight: .bold)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    private let surnameLbl = MakerView.shared.makeLbl()
+    private let phoneNumberLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .black
+        view.font = .systemFont(ofSize: 20, weight: .bold)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    private let phoneNumLbl = MakerView.shared.makeLbl()
+    private var personInfo: PersonModel? {
+        didSet {
+            nameLabel.text = "Name: \(personInfo?.name ?? "" )"
+            surnameLabel.text = "Surname: \(personInfo?.surname ?? "")"
+            phoneNumberLabel.text = "Phone Number: \(personInfo?.phoneNumber ?? "")"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        let personModel = UserSessionManager.shared.getPersonInfo()
+        personInfo = personModel
         initUI()
-        update()
     }
     
     private func initUI() {
-        view.addSubview(nameLbl)
-        setupConstraintsForNameLbl()
+        view.addSubview(nameLabel)
+        setupConstraintsForNameLabel()
         
-        view.addSubview(surnameLbl)
-        setupConstraintsForSurnameLbl()
+        view.addSubview(surnameLabel)
+        setupConstraintsForSurnameLabel()
         
-        view.addSubview(phoneNumLbl)
-        setupConstraintsForPhoneNumLbl()
+        view.addSubview(phoneNumberLabel)
+        setupConstraintsForPhoneNumLabel()
     }
     
-    private func setupConstraintsForNameLbl() {
+    private func setupConstraintsForNameLabel() {
         NSLayoutConstraint.activate([
-            nameLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            nameLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50)
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50)
         ])
     }
     
-    private func setupConstraintsForSurnameLbl() {
+    private func setupConstraintsForSurnameLabel() {
         NSLayoutConstraint.activate([
-            surnameLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            surnameLbl.topAnchor.constraint(equalTo: nameLbl.bottomAnchor, constant: 30)
+            surnameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            surnameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30)
         ])
     }
     
-    private func setupConstraintsForPhoneNumLbl() {
+    private func setupConstraintsForPhoneNumLabel() {
         NSLayoutConstraint.activate([
-            phoneNumLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            phoneNumLbl.topAnchor.constraint(equalTo: surnameLbl.bottomAnchor, constant: 30)
+            phoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            phoneNumberLabel.topAnchor.constraint(equalTo: surnameLabel.bottomAnchor, constant: 30)
         ])
-    }
-    
-    private func update() {
-        if let person = person {
-            nameLbl.text = "Name: \(person.name ?? "")"
-            surnameLbl.text = "Surname: \(person.surname)"
-            phoneNumLbl.text = "Phone Number: \(person.phoneNumber)"
-        }
     }
 }

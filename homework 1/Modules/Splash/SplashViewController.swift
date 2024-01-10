@@ -13,13 +13,12 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         if let sessionDate = UserSessionManager.shared.getSession(),
-        sessionDate < Date() {
+        sessionDate > Date() {
             let vc = InfoViewController()
             present(vc, animated: true)
         } else {
             let vc = UserAutorizationViewController()
             present(vc, animated: true)
-            UserSessionManager.shared.deleteSession()
         }
     }
 

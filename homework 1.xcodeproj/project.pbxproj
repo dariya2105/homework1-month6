@@ -16,7 +16,6 @@
 		CEB9B4B92B400904000D7DC9 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9B4B82B400904000D7DC9 /* PersonModel.swift */; };
 		CEB9B4BB2B400A4B000D7DC9 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9B4BA2B400A4B000D7DC9 /* UserDefaultManager.swift */; };
 		CEB9B4BF2B40141C000D7DC9 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9B4BE2B40141C000D7DC9 /* SplashViewController.swift */; };
-		CEB9B4C12B40154D000D7DC9 /* MakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9B4C02B40154D000D7DC9 /* MakerView.swift */; };
 		CEB9B4C32B402150000D7DC9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9B4C22B402150000D7DC9 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		CEB9B4B82B400904000D7DC9 /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
 		CEB9B4BA2B400A4B000D7DC9 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		CEB9B4BE2B40141C000D7DC9 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		CEB9B4C02B40154D000D7DC9 /* MakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerView.swift; sourceTree = "<group>"; };
 		CEB9B4C22B402150000D7DC9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,9 +64,9 @@
 		CEB9B49B2B3FFE0B000D7DC9 /* homework 1 */ = {
 			isa = PBXGroup;
 			children = (
+				CEB9B4BC2B400D29000D7DC9 /* App */,
 				CEB9B4B22B4007A9000D7DC9 /* Model */,
 				CEB9B4B02B40063D000D7DC9 /* Modules */,
-				CEB9B4BC2B400D29000D7DC9 /* App */,
 				CEB9B4BD2B400D58000D7DC9 /* Resources */,
 				CEB9B4AA2B3FFE0C000D7DC9 /* Info.plist */,
 			);
@@ -102,14 +100,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CEB9B4B52B400843000D7DC9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CEB9B4C02B40154D000D7DC9 /* MakerView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		CEB9B4B62B400848000D7DC9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +112,6 @@
 		CEB9B4B72B400867000D7DC9 /* Autorization */ = {
 			isa = PBXGroup;
 			children = (
-				CEB9B4B52B400843000D7DC9 /* View */,
 				CEB9B4B62B400848000D7DC9 /* Controller */,
 			);
 			path = Autorization;
@@ -222,7 +211,6 @@
 				CEB9B4B92B400904000D7DC9 /* PersonModel.swift in Sources */,
 				CEB9B4C32B402150000D7DC9 /* InfoViewController.swift in Sources */,
 				CEB9B49D2B3FFE0B000D7DC9 /* AppDelegate.swift in Sources */,
-				CEB9B4C12B40154D000D7DC9 /* MakerView.swift in Sources */,
 				CEB9B4BF2B40141C000D7DC9 /* SplashViewController.swift in Sources */,
 				CEB9B49F2B3FFE0B000D7DC9 /* SceneDelegate.swift in Sources */,
 			);
