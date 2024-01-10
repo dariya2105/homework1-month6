@@ -18,15 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let vc = SplashViewController()
-                let navControler = UINavigationController(rootViewController: vc)
-                window?.rootViewController = navControler
+                let nav = UINavigationController(rootViewController: vc)
+                window?.rootViewController = nav
                 window?.makeKeyAndVisible()
             }
             
             func showAuthorizationScreen() {
-                let userAuthVC = UserAutorizationViewController()
-                let navController = UINavigationController(rootViewController: userAuthVC)
-                window?.rootViewController = navController
+                let userViewController = UserAutorizationViewController()
+                let nav = UINavigationController(rootViewController: userViewController)
+                window?.rootViewController = nav
                 window?.makeKeyAndVisible()
             }
 
